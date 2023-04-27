@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="用于实时大规模密集重建和协作定位的多无人机系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ClusterFusion">
+<meta property="og:url" content="http://example.com/2023/03/28/ClusterFusion/index.html">
+<meta property="og:site_name" content="WangYu Blog">
+<meta property="og:description" content="用于实时大规模密集重建和协作定位的多无人机系统">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/ClusterFusion/ClusterFusion_cover.png">
+<meta property="og:image" content="http://example.com/images/ClusterFusion/fig_wutai_path.png">
+<meta property="og:image" content="http://example.com/images/ClusterFusion/fig_overview.png">
+<meta property="article:published_time" content="2023-03-28T01:15:36.000Z">
+<meta property="article:modified_time" content="2023-04-27T14:35:59.477Z">
+<meta property="article:author" content="Wang Yu">
+<meta property="article:tag" content="Paper">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/ClusterFusion/ClusterFusion_cover.png"><title>ClusterFusion | WangYu Blog</title><link ref="canonical" href="http://example.com/2023/03/28/ClusterFusion/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">王禹的博客</div><div class="header-banner-info__subtitle">Hello World!</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">ClusterFusion</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-03-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-04-27</span></span></div></header><div class="post-body"><p><img src="/images/ClusterFusion/ClusterFusion_cover.png"></p>
+<center> <font size="4"> 用于实时大规模密集重建和协作定位的多无人机系统 </font></center>
+
+<span id="more"></span>
+
+<hr>
+<p>As robotics technology advances, dense point cloud maps are increasingly in demand. However, dense reconstruction using a single unmanned aerial vehicle (UAV) suffers from limitations in flight speed and battery power, resulting in slow reconstruction and low coverage. Cluster UAV systems offer greater flexibility and wider coverage for map building. Existing methods of cluster UAVs face challenges with accurate relative positioning, scale drift, and high-speed dense point cloud map generation. </p>
+<p>   随着机器人技术的进步，现在对密集点云地图的需求越来越大。然而，使用单个无人机的密集重建收到其飞行速度和电池功率的限制，导致重建缓慢和覆盖率低。集群无人机系统为地图构建提供了更大的灵活性和更广泛的覆盖范围。集群无人机的现有方法面临着精确的相对定位、比例漂移和高速密集点云图生成的挑战。</p>
+
+        <h1 id="Abstract"   >
+          <a href="#Abstract" class="heading-link"><i class="fas fa-link"></i></a><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1>
+      <p>To address these issues, we propose a cluster framework for large-scale dense reconstruction and real-time collaborative localization. The front-end of the framework is an improved visual odometry which can effectively handle large-scale scenes. Collaborative localization between UAVs is enabled through a two-stage joint optimization algorithm and a relative pose optimization algorithm, effectively achieving accurate relative positioning of UAVs and mitigating scale drift. Estimated poses are used to achieve real-time dense reconstruction and fusion of point cloud maps. To evaluate the performance of our proposed method, we conduct qualitative and quantitative experiments on real-world data. The results demonstrate that our framework can effectively suppress scale drift and generate large-scale dense point cloud maps in real-time, with the reconstruction speed increasing as more UAVs are added to the system. </p>
+
+        <h1 id="摘要"   >
+          <a href="#摘要" class="heading-link"><i class="fas fa-link"></i></a><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1>
+      <p>为了解决这些问题，我们提出了一个用于大规模密集重建和实时协作定位的集群框架。该框架的前端是一种改进的视觉里程计，可以有效地处理大规模场景。通过两阶段联合优化算法和相对姿态优化算法，实现无人机之间的协同定位，有效实现无人机的精确相对定位，缓解尺度漂移。估计的姿态用于实现点云地图的实时密集重建和融合。为了评估我们提出的方法的性能，我们对真实世界的数据进行了定性和定量实验。结果表明，我们的框架可以有效地抑制尺度漂移，并实时生成大规模密集点云图，随着系统中加入更多无人机，重建速度也会加快。</p>
+
+        <h1 id="Introduction"   >
+          <a href="#Introduction" class="heading-link"><i class="fas fa-link"></i></a><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1>
+      <p><img src="/images/ClusterFusion/fig_wutai_path.png"></p>
+<p>A demo of dense reconstruction using multiple UAVs can be found in figure above and the architecture of this framework is shown in figure below. </p>
+<p><img src="/images/ClusterFusion/fig_overview.png"></p>
+<blockquote>
+<p>ClusterFusion: The framework for dense reconstruction of multi-UAV. The white UAV represents the center UAV. Each UAV performs ego-pose estimation, global pose optimization and dense reconstruction distributedly, and then multi-UAV joint optimization and point cloud fusion are performed at the central node. </p>
+</blockquote>
+<p>The contributions of this work are summarized as follows: </p>
+<ul>
+<li>We present a cluster reconstruction framework, which can expand the number of UAVs with low computation and communication costs and perform the collaborative reconstruction tasks in real-time.</li>
+<li>We propose a two-stage joint optimization algorithm that can optimize the local pose and scale, as well as estimate the relative poses, without incurring high communication costs.</li>
+<li>To achieve more accurate poses estimation between UAVs, a relative pose optimization method is proposed which first detects the common-view relationships between images and then optimizes the relative poses based on homography.</li>
+<li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/npupilab/cluster-fusion-dataset" >Datasets</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> for large-scale 3D dense reconstruction of multiple UAVs in real world are created which is public access.</li>
+</ul>
+
+        <h1 id="介绍"   >
+          <a href="#介绍" class="heading-link"><i class="fas fa-link"></i></a><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1>
+      <p>这项工作的贡献总结如下：</p>
+<ul>
+<li><p>我们提出了一个集群重建框架，该框架可以以较低的计算和通信成本扩大无人机的数量，并实时执行协同重建任务。</p>
+</li>
+<li><p>我们提出了一种两阶段联合优化算法，该算法可以优化局部姿态和尺度，并估计相对姿态，而不会产生高昂的通信成本。</p>
+</li>
+<li><p>为了实现无人机之间更精确的姿态估计，提出了一种相对姿态优化方法，该方法首先检测图像之间的公共视图关系，然后基于单应性对相对姿态进行优化。</p>
+</li>
+<li><p>对于真实世界中的多个无人机的大规模3D密集重建创建了公共<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/npupilab/cluster-fusion-dataset" >数据集</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。</p>
+</li>
+</ul>
+
+        <h1 id="Video-and-Paper"   >
+          <a href="#Video-and-Paper" class="heading-link"><i class="fas fa-link"></i></a><a href="#Video-and-Paper" class="headerlink" title="Video and Paper"></a>Video and Paper</h1>
+      <p>The full paper can be found <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://arxiv.org/abs/2304.04943" >here</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.</p>
+<p>The video can be found <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1684y1P77f/?spm_id_from=333.999.0.0" >here</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.</p>
+<div style="position: relative; width: 100%; height: 50%; padding-bottom: 75%;"><iframe 
+src="//player.bilibili.com/player.html?aid=610609028&bvid=BV1684y1P77f&cid=1039738553&page=1" scrolling="no" border="0" 
+frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
+height: 100%; left: 0; top: 0;"> </iframe></div></div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://example.com">Wang Yu</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://example.com/2023/03/28/ClusterFusion/">http://example.com/2023/03/28/ClusterFusion/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/Paper/">Paper</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2023/03/28/HybridFusion-LiDAR-and-Vision-Cross-Source-Point-Cloud-Fusion/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">HybridFusion: LiDAR and Vision Cross-Source Point Cloud Fusion</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2023/03/27/AboutMe/"><span class="paginator-prev__text">个人简介</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Abstract"><span class="toc-number">1.</span> <span class="toc-text">
+          Abstract</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">2.</span> <span class="toc-text">
+          摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">3.</span> <span class="toc-text">
+          Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.</span> <span class="toc-text">
+          介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Video-and-Paper"><span class="toc-number">5.</span> <span class="toc-text">
+          Video and Paper</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/assets/orgin.png" alt="avatar"></div><p class="sidebar-ov-author__text">对SLAM和三维重建保持热爱</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/bing-ying" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="/images/weixin.jpeg" target="_blank" rel="noopener" data-popover="Wechat" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>

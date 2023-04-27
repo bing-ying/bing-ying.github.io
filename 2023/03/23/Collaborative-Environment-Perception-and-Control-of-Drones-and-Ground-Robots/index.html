@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="利用无人机快速扫描实时生成地图，给机器人创造先验环境，机器人根据此地图以及自身传感器快速到达目标点完成目标。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Collaborative Environment Perception and Control of Drones and Ground Robots">
+<meta property="og:url" content="http://example.com/2023/03/23/Collaborative-Environment-Perception-and-Control-of-Drones-and-Ground-Robots/index.html">
+<meta property="og:site_name" content="WangYu Blog">
+<meta property="og:description" content="利用无人机快速扫描实时生成地图，给机器人创造先验环境，机器人根据此地图以及自身传感器快速到达目标点完成目标。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/Collaborative-Environment-Perception/UAVmain.png">
+<meta property="og:image" content="http://example.com/images/Collaborative-Environment-Perception/costmap_main.png">
+<meta property="article:published_time" content="2023-03-23T09:30:23.000Z">
+<meta property="article:modified_time" content="2023-04-27T14:35:04.852Z">
+<meta property="article:author" content="Wang Yu">
+<meta property="article:tag" content="Paper">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/Collaborative-Environment-Perception/UAVmain.png"><title>Collaborative Environment Perception and Control of Drones and Ground Robots | WangYu Blog</title><link ref="canonical" href="http://example.com/2023/03/23/Collaborative-Environment-Perception-and-Control-of-Drones-and-Ground-Robots/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">王禹的博客</div><div class="header-banner-info__subtitle">Hello World!</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Collaborative Environment Perception and Control of Drones and Ground Robots</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-03-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-04-27</span></span></div></header><div class="post-body"><center> <font size="4"> 利用无人机快速扫描实时生成地图，给机器人创造先验环境，机器人根据此地图以及自身传感器快速到达目标点完成目标。 
+</font></center>
+
+
+
+<span id="more"></span>
+
+<hr>
+
+        <h1 id="Abstract"   >
+          <a href="#Abstract" class="heading-link"><i class="fas fa-link"></i></a><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1>
+      <p>In recent years, with the development of intelligent control, UAV and UGV gradually become the current research hotspot, and set foot in the field of environment perception and control gradually. But both of them have obvious defects. The ground robot has some defects, such as being influenced by geological conditions, slow and incomplete environment perception<br>; UAV has the defects of high energy consumption and insufficient transportation capacity. In this paper, In this paper, we will build a primary UAV and UGV cooperative environment perception and control system. The research content is mainly divided into two aspects：</p>
+<p>In the aspect of UAV high-altitude environment perception, in order to restore the details of the environment, this paper uses dense 3D reconstruction method, and uses UAV aerial photos to generate point cloud images to complete the construction of global environment information. In order to make better use of the global environment information, this paper uses the class methods in PCL, such as plane estimation, point cloud estimation, etc., to distinguish and collect the reachable and unreachable points of the point cloud image. Aiming at the possible mismatches in dense 3D reconstruction, this paper proposes a clustering filtering algorithm, which can eliminate the discrete points in the mismatches and retain the effective information of the point cloud.</p>
+<p>In the aspect of robot ground environment perception and control, it is mainly divided into three modules: 1. The establishment of 2D grid map. For the problem of unit conversion, this paper uses the GPS information of UAV photos to realize the unit conversion from 3D to 2D space, and projects the collection of unreachable points to the 2D plane. For the gap between the points,this paper will use graphics morphology to fill. 2. Robot positioning. For the initial positioning, this paper uses an Airborne GPS module to achieve. For the subsequent real-time positioning, this paper uses odometer information and Kalman filter algorithm to estimate. 3. Real time environment perception. Because only inaccessible points are marked in the map,  and no mark although it can reach but the cost of high terrain, such as slope.For this, this paper will rely on the point cloud image and radar sensor to sense the environment around UGV in real time, detect and modify the map information.</p>
+<p>Finally, this paper tests in real environment, and simulates the perception and control of ground and aerial cooperative environment. The final results of the system show that it can quickly and efficiently sense the environment and stably carry out intelligent control.</p>
+
+        <h1 id="摘要"   >
+          <a href="#摘要" class="heading-link"><i class="fas fa-link"></i></a><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1>
+      <p>近年来，随着智能控制的发展，无人机与地面机器人逐步成为当前研究热点并逐渐踏足于环境感知与控制领域。但是二者各自都存在着明显的缺陷，地面机器人存在受地质条件影响较大、环境感知缓慢不完全等缺点;无人机存在耗能高，运输能力不足的缺陷。本文将无人机与地面机器人融合，二者取长补短，建立一个较为初级的无人机与地面机器人协同环境感知与控制系统。研究内容主要分为两个方面：</p>
+<p>在无人机高空环境感知方面，为了还原环境中的细节，本文采用稠密三维重建的方式，利用无人机航拍图片生成点云图，完成对全局环境信息的构建。为了更好的利用全局环境信息，本文采用了PCL中的类方法如：平面估计、点云估计等，分辨并收集出点云图的可达与不可达点。并针对稠密三维重建中可能存在的误匹配，本文提出一种聚类滤波算法，可以剔除误匹配中的离散点，并保留点云的有效信息。</p>
+<p>在机器人地面环境感知与控制方面，其主要分为三个模块：1.二维栅格地图的建立。对于单位转化的问题，本文利用无人机拍摄的照片的GPS信息，实现三维空间至二维空间的单位转换，将收集到的不可达点集投影到二维平面。针对点之间的空隙，本文将使用图形形态学进行填充。2.机器人的定位，对于初始定位，本文使用一个机载GPS模块来实现。对于后续的实时定位，本文则是采用里程计信息与卡尔曼滤波算法进行估计。3.实时环境感知，由于地图中只标记了不可达点，而没有标记虽然可达但是所需代价较高的点，如斜坡等，针对于此，本文还将依赖点云图与雷达传感器实时的对机器人周围进行环境的感知，探测和修改地图信息。</p>
+<p>最后，本文在真实环境中进行测试，进行了空地协同环境感知与控制的模拟。该系统最终结果表明，其可以快速高效的进行环境感知和稳定的进行智能控制。</p>
+
+        <h1 id="Introduction"   >
+          <a href="#Introduction" class="heading-link"><i class="fas fa-link"></i></a><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1>
+      <p>此系统主要分为两歩，分别视无人机环境感知和机器人地面控制。</p>
+
+        <h2 id="无人机环境感知"   >
+          <a href="#无人机环境感知" class="heading-link"><i class="fas fa-link"></i></a><a href="#无人机环境感知" class="headerlink" title="无人机环境感知"></a>无人机环境感知</h2>
+      <p><img src="/images/Collaborative-Environment-Perception/UAVmain.png"></p>
+<blockquote>
+<p>点云处理流程图展示</p>
+</blockquote>
+<p>使用 Colmap进行重建，使用 PCL 库函数进行处理点云，明确可达于不可达点。通过以上的处理会对接下来的机器人控制建立起良好的开端。</p>
+
+        <h2 id="机器人地面控制"   >
+          <a href="#机器人地面控制" class="heading-link"><i class="fas fa-link"></i></a><a href="#机器人地面控制" class="headerlink" title="机器人地面控制"></a>机器人地面控制</h2>
+      <p><img src="/images/Collaborative-Environment-Perception/costmap_main.png"></p>
+<blockquote>
+<p>算法处理流程图展示</p>
+</blockquote>
+<p>算法的主要流程就是初始化，设置范围，设置代价，这是因为这时ROS 在父类中所设的接口。对于初始化，主要目的是得到数据，如通过 Service 得到 Scale。设置范围主要内容使是确定本次需要修改的范围，并把代价存储到当前层的 costmap 中。由于使用的是ros navigation，只需将costmap作为插件插入到地图中，即可使用这层costmap。而在设置代价过程中是将单层的 costmap 在设置好的范围内将有用信息存入主要的 costmap 中。</p>
+
+        <h1 id="video"   >
+          <a href="#video" class="heading-link"><i class="fas fa-link"></i></a><a href="#video" class="headerlink" title="video"></a>video</h1>
+      <div style="position: relative; width: 100%; height: 50%; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=457285568&bvid=BV1a5411j7kH&cid=350365465&page=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"style="position: absolute; width: 100%; 
+height: 100%; left: 0; top: 0;"> </iframe>
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://example.com">Wang Yu</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://example.com/2023/03/23/Collaborative-Environment-Perception-and-Control-of-Drones-and-Ground-Robots/">http://example.com/2023/03/23/Collaborative-Environment-Perception-and-Control-of-Drones-and-Ground-Robots/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/Paper/">Paper</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2023/03/27/AboutMe/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">个人简介</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2023/03/20/A-Fast-Reconstuction-Method-Based-on-Real-time-Terrain-Following/"><span class="paginator-prev__text">Terrain Following in AirSim</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Abstract"><span class="toc-number">1.</span> <span class="toc-text">
+          Abstract</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">2.</span> <span class="toc-text">
+          摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">3.</span> <span class="toc-text">
+          Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%8E%AF%E5%A2%83%E6%84%9F%E7%9F%A5"><span class="toc-number">3.1.</span> <span class="toc-text">
+          无人机环境感知</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9C%B0%E9%9D%A2%E6%8E%A7%E5%88%B6"><span class="toc-number">3.2.</span> <span class="toc-text">
+          机器人地面控制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#video"><span class="toc-number">4.</span> <span class="toc-text">
+          video</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/assets/orgin.png" alt="avatar"></div><p class="sidebar-ov-author__text">对SLAM和三维重建保持热爱</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/bing-ying" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="/images/weixin.jpeg" target="_blank" rel="noopener" data-popover="Wechat" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>
