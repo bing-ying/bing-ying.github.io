@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="在GPS拒止环境下智能自主无人机对多个地面运动目标进行协同侦察，通过执行自主定位、目标识别、目标跟踪等任务，实现对特定目标的精确识别、连续跟踪和定位。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Indoor UAV Autonomous Detection and Tracking System">
+<meta property="og:url" content="http://example.com/2023/04/06/Indoor-UAV-Autonomous-Detection-and-Tracking-System/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在GPS拒止环境下智能自主无人机对多个地面运动目标进行协同侦察，通过执行自主定位、目标识别、目标跟踪等任务，实现对特定目标的精确识别、连续跟踪和定位。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/Indoor-UAV-LiDAR/uav_front.jpeg">
+<meta property="og:image" content="http://example.com/images/Indoor-UAV-LiDAR/uav_left.jpeg">
+<meta property="og:image" content="http://example.com/images/Indoor-UAV-LiDAR/overview.png">
+<meta property="og:image" content="http://example.com/images/Indoor-UAV-LiDAR/uav_lidar.png">
+<meta property="article:published_time" content="2023-04-06T07:27:04.000Z">
+<meta property="article:modified_time" content="2023-04-27T09:29:46.955Z">
+<meta property="article:author" content="Wang Yu">
+<meta property="article:tag" content="Project">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/Indoor-UAV-LiDAR/uav_front.jpeg"><title>Indoor UAV Autonomous Detection and Tracking System | Hexo</title><link ref="canonical" href="http://example.com/2023/04/06/Indoor-UAV-Autonomous-Detection-and-Tracking-System/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">王禹的博客</div><div class="header-banner-info__subtitle">Hello World!</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Indoor UAV Autonomous Detection and Tracking System</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-04-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-04-27</span></span></div></header><div class="post-body"><p><img src="/images/Indoor-UAV-LiDAR/uav_front.jpeg"></p>
+<center> <font size="4"> 
+在GPS拒止环境下智能自主无人机对多个地面运动目标进行协同侦察，通过执行自主定位、目标识别、目标跟踪等任务，实现对特定目标的精确识别、连续跟踪和定位。 </font></center>
+
+<span id="more"></span>
+
+<hr>
+<p><img src="/images/Indoor-UAV-LiDAR/uav_left.jpeg"></p>
+
+        <h1 id="系统架构"   >
+          <a href="#系统架构" class="heading-link"><i class="fas fa-link"></i></a><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1>
+      <p> 该系统是由地面端和天空端组成的，天空端依赖于CodeV飞机的框架，由云台相机、激光雷达、NUC机载电脑、PX4飞控和远程数字图像传输模块组成。在地面端，移动计算机可以通过图像传输模块进行连接远程操控。 </p>
+<p><img src="/images/Indoor-UAV-LiDAR/overview.png"></p>
+<blockquote>
+<p>整个软件流程如下，主要分为三个模块：检测、控制和定位。<br>检测模块通过RTSP解析视频流，使用Yolo检测目标，Saim跟踪目标，并根据二维码计算目标的姿态。<br>控制模块负责控制无人机的飞行，在不同的时间段进入不同的模式，如巡航和跟踪，并完成相应的任务。<br>定位模块负责根据激光雷达和IMU的信息计算无人机自身的姿态，并传递给无人机。</p>
+</blockquote>
+<p><img src="/images/Indoor-UAV-LiDAR/uav_lidar.png"></p>
+<p> 可以在这里找到软件的描述(<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://gitee.com/pi-lab/contest_uav_tracking_lidar" >https://gitee.com/pi-lab/contest_uav_tracking_lidar</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>)</p>
+<p> 视频可以在这里找到（）（FIXME）。 </p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://example.com">Wang Yu</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://example.com/2023/04/06/Indoor-UAV-Autonomous-Detection-and-Tracking-System/">http://example.com/2023/04/06/Indoor-UAV-Autonomous-Detection-and-Tracking-System/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/Project/">Project</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2023/04/06/ClusterFusion/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">ClusterFusion</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2023/04/05/UWB-VO-Ultra-wideband-Anchor-Assisted-Visual-Odometry/"><span class="paginator-prev__text">UWB-VO: Ultra-wideband Anchor Assisted Visual Odometry</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">
+          系统架构</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/assets/orgin.png" alt="avatar"></div><p class="sidebar-ov-author__text">对SLAM和三维重建保持热爱</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/bing-ying" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="/images/weixin.jpeg" target="_blank" rel="noopener" data-popover="Wechat" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>
